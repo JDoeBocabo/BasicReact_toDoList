@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
-
+import { List } from './List';
 function App() {
+  let [toDoList, settoDoList] = useState([]); 
+  let [list, setlist] = useState(""); 
+
+  const setToDo = (event) => {
+    setlist(event.target.value)
+  }
+
+  const addList = () => {
+    let newList = {
+      id: toDoList.length === 0 ? 1 : toDoList[toDoList.length - 1].id + 1,
+      list: list
+    } 
+    settoDoList([...toDoList, newList])
+  }
+
+  const deleteList = (id) => {
+    let reducedList = toDoList.filter((li) =>{
+      return li.id !== id
+    })
+    settoDoList(reducedList)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>To Do List</h1>
+      <div>
+        <input placeholder='add task' type="text" onChange={setToDo} />
+        <button className="add" onClick={addList}>Add</button>
+      </div>
+      <div className='list-container'>
+        {toDoList.map((toDo, key) => {
+          return <List  list={toDo.list} id={toDo.id} key={key} deleteList={deleteList}/>
+        })}
+      </div>
     </div>
   );
 }
+
 
 export default App;
