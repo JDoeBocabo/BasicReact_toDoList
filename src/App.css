@@ -19,7 +19,7 @@ body{
   padding: 15px;
   border-radius: 3px;
   gap: 10px;
-  width: 325px;
+  width: 350px;
   box-shadow: 1px 1px 8px  #325bb4;
   min-height: 300px;
 }
@@ -70,16 +70,20 @@ input[type="text"]:focus {
 
 .list {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   align-items: center;
   color: #fff;
   margin-bottom: 10px;
 }
 
+.form{
+  margin-inline: auto;
+}
 .delete {
   background-color: #c94625;
   height: 30px;
   width: 50px;
+  padding-inline: 5px;
   border-style: none;
   align-self: center;
   border-radius: 2px;
@@ -98,17 +102,38 @@ input[type="text"]:focus {
   color: black;
   background-color: #fff;
   width: 100%;
+  min-width: 200px;
   height: 35px;
   max-width: 235px;
   padding-inline: 5px;
+  
 }
 
 p {
   align-self: center;
+  overflow: hidden;
 }
 
 
 h1 {
   text-align: center;
   color: #fff;
+  /* text-decoration: ; */
 }
+
+.markDone {
+  background-color: #06b82c;
+  height: 30px;
+  width: 50px;
+  padding-inline: 5px;
+  border-style: none;
+  align-self: center;
+  border-radius: 2px;
+  cursor: pointer;
+  color: black;
+}
+
+.markDone:hover {
+  box-shadow: 0 0 6px #06b82c;
+}
+
